@@ -20,7 +20,5 @@ class Market
     end
   end
 
-  def potential_revenue
-    
-  end
+
 end
