@@ -13,11 +13,6 @@ class Market
     @vendors.collect { |vendor| vendor.name }
   end
 
-  # def vendors_by_item
-  #   @vendors.reduce(Hash.new) do |acc, vendor|
-  #     acc[]
-  # end
-
   def vendors_that_sell(item)
     @vendors.find_all do |vendor|
       vendor if vendor.item_list.include?(item)
@@ -25,7 +20,36 @@ class Market
   end
 
   def total_inventory
+    find_all_items.reduce({}) do |acc, item|
+      acc[item] ||= {
+        quantity: total_qty_by(item),
+        vendors: vendors_that_sell(item)
+      }
+      acc
+    end
+  end
 
+  def total_qty_by(item)
+    vendors_that_sell(item).reduce(0) do |acc, vendor|
+      acc += vendor.inventory[item]
+      acc
+    end
+  end
+
+  # --------------
+
+  def find_all_items
+    @vendors.flat_map do |vendor|
+      vendor.item_list
+    end.uniq
+  end
+
+  def inventory_by_vendor
+    # NOT USED
+    @vendors.reduce({}) do |acc, vendor|
+      acc[vendor] ||= vendor.inventory
+      acc
+    end
   end
 
 end

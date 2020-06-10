@@ -63,7 +63,7 @@ class MarketTest < Minitest::Test
   end
 
   def test_can_get_total_inventory
-    skip
+
     @vendor3.stock(@item3, 10)
 
     @market.add_vendor(@vendor1)
@@ -71,5 +71,28 @@ class MarketTest < Minitest::Test
     @market.add_vendor(@vendor3)
 
     assert_instance_of Hash, @market.total_inventory
+  end
+
+  def test_find_item_list
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+
+    assert_equal [@item1, @item2, @item4, @item3], @market.find_all_items
+  end
+
+  def test_items_by_vendor
+    # NOT USED
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+
+    expected = {
+      @vendor1 => @vendor1.inventory,
+      @vendor2 => @vendor2.inventory,
+      @vendor3 => @vendor3.inventory
+    }
+
+    assert_equal expected, @market.inventory_by_vendor
   end
 end
