@@ -61,4 +61,8 @@ class VendorTest < Minitest::Test
     assert_equal 345.00, vendor2.potential_revenue
     assert_equal 48.75, vendor3.potential_revenue
   end
+
+  def test_item_list
+    # test helper
+  end
 end

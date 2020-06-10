@@ -20,8 +20,7 @@ class Market
 
   def vendors_that_sell(item)
     @vendors.find_all do |vendor|
-      items = vendor.item_list
-      vendor if items.include?(item)
+      vendor if vendor.item_list.include?(item)
     end
   end
 
