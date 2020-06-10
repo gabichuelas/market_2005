@@ -48,6 +48,10 @@ class Market
      find_all_items.collect { |item| item.name }.sort
    end
 
+   def date
+     Date.today.strftime("%d/%m/%Y")
+   end
+
   # --------------
 
   def find_all_items

@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './lib/item'
 require './lib/vendor'
 require './lib/market'
+require 'date'
 
 class MarketTest < Minitest::Test
   def setup
@@ -96,8 +97,12 @@ class MarketTest < Minitest::Test
     @market.add_vendor(@vendor1)
     @market.add_vendor(@vendor2)
     @market.add_vendor(@vendor3)
-    
+
     assert_equal ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"], @market.sorted_item_list
+  end
+
+  def test_date
+    assert_equal "10/06/2020", @market.date
   end
 
   def test_items_by_vendor
