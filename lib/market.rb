@@ -19,4 +19,8 @@ class Market
       vendor if items.include?(item)
     end
   end
+
+  def potential_revenue
+    
+  end
 end
