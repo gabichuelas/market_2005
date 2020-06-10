@@ -13,12 +13,20 @@ class Market
     @vendors.collect { |vendor| vendor.name }
   end
 
+  # def vendors_by_item
+  #   @vendors.reduce(Hash.new) do |acc, vendor|
+  #     acc[]
+  # end
+
   def vendors_that_sell(item)
     @vendors.find_all do |vendor|
-      items = vendor.inventory.keys
+      items = vendor.item_list
       vendor if items.include?(item)
     end
   end
 
+  def total_inventory
+
+  end
 
 end

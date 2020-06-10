@@ -18,6 +18,10 @@ class Vendor
       total = item.price * qty
       acc += total
       acc
-    end 
+    end
+  end
+
+  def item_list
+    @inventory.keys
   end
 end
