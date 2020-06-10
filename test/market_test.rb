@@ -63,7 +63,6 @@ class MarketTest < Minitest::Test
   end
 
   def test_can_get_total_inventory
-
     @vendor3.stock(@item3, 10)
 
     @market.add_vendor(@vendor1)
@@ -79,6 +78,16 @@ class MarketTest < Minitest::Test
     @market.add_vendor(@vendor3)
 
     assert_equal [@item1, @item2, @item4, @item3], @market.find_all_items
+  end
+
+  def test_can_find_overstocked_items
+    @vendor3.stock(@item3, 10)
+
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    
+    assert_equal [@item1], @market.overstocked_items
   end
 
   def test_items_by_vendor
