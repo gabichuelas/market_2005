@@ -43,7 +43,11 @@ class Market
      end
      items
    end
-   
+
+   def sorted_item_list
+     find_all_items.sort
+   end
+
   # --------------
 
   def find_all_items
