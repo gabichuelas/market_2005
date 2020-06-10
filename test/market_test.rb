@@ -102,7 +102,8 @@ class MarketTest < Minitest::Test
   end
 
   def test_date
-    assert_equal "10/06/2020", @market.date
+    expected = Date.today.strftime("%d/%m/%Y")
+    assert_equal expected, @market.date
   end
 
   def test_items_by_vendor
