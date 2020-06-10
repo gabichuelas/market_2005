@@ -7,5 +7,16 @@ class Market
 
   def add_vendor(vendor)
     @vendors << vendor
-  end 
+  end
+
+  def vendor_names
+    @vendors.collect { |vendor| vendor.name }
+  end
+
+  def vendors_that_sell(item)
+    @vendors.find_all do |vendor|
+      items = vendor.inventory.keys
+      vendor if items.include?(item)
+    end
+  end
 end
