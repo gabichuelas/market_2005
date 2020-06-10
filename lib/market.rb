@@ -45,7 +45,7 @@ class Market
    end
 
    def sorted_item_list
-     find_all_items.sort
+     find_all_items.collect { |item| item.name }.sort
    end
 
   # --------------
